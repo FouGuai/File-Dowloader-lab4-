@@ -306,7 +306,7 @@ void send_file(struct client *cl) {
       if (errno == EINTR) {
         continue;
       }
-      printf("client exir: %s\n", strerror(errno));
+      printf("client exit: %s\n", strerror(errno));
       break;
     }
     tosend -= sent;
