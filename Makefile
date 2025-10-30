@@ -2,7 +2,7 @@
 
 # Compiler and flags
 CC = gcc
-CFLAGS = -O2 -Wall
+CFLAGS = -o2 -Wall
 LDFLAGS = -pthread
 
 # Source files

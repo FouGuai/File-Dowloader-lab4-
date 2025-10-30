@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <netinet/in.h>
 #include <pthread.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -140,6 +141,7 @@ struct thread_pool *create_thread_pool(int num_threads) {
       free(pool);
       return NULL;
     }
+    printf("thread %d init\n", i);
   }
 
   return pool;
@@ -305,8 +307,10 @@ void send_file(struct client *cl) {
     ssize_t sent = sendfile(cl->fd, filefd, &off,
                             (size_t)(tosend > BUFSIZE ? BUFSIZE : tosend));
     if (sent <= 0) {
-      if (errno == EINTR)
+      if (errno == EINTR) {
         continue;
+      }
+      printf("client exir: %s\n", strerror(errno));
       break;
     }
     tosend -= sent;
@@ -337,6 +341,7 @@ int accept_client(int listen_fd, struct sockaddr_in *client_addr) {
 // 主服务器函数
 void run_server(int listen_fd, int epoll_fd, struct thread_pool *pool) {
   struct epoll_event events[MAX_EVENTS];
+  signal(SIGPIPE, SIG_IGN);
 
   while (1) {
     int nfds = epoll_wait(epoll_fd, events, MAX_EVENTS, -1);
