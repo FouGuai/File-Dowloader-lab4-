@@ -1,4 +1,4 @@
-# Makefile for the server and client programs
+// Copyright (c) 2025 foushen. All rights reserved.
 
 # Compiler and flags
 CC = gcc

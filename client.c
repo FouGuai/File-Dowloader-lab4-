@@ -1,7 +1,4 @@
-// client.c
-// 多线程下载客户端，支持断点续传（使用 .meta 文件记录已完成的 part）
-// 编译: gcc -pthread -O2 client.c -o client
-
+// Copyright (c) 2025 foushen. All rights reserved.
 #define _GNU_SOURCE
 #include <arpa/inet.h>
 #include <errno.h>

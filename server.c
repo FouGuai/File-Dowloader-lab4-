@@ -1,8 +1,4 @@
-// server_epoll_thread_pool.c
-// 使用 epoll 和线程池实现的多线程服务端
-// 编译: gcc -O2 -Wall -o server_epoll_thread_pool server_epoll_thread_pool.c
-// -pthread
-
+// Copyright (c) 2025 foushen. All rights reserved.
 #define _GNU_SOURCE
 #include <arpa/inet.h>
 #include <errno.h>
