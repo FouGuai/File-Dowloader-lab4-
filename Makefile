@@ -1,5 +1,4 @@
-// Copyright (c) 2025 foushen. All rights reserved.
-
+# Copyright (c) 2025 foushen. All rights reserved.
 # Compiler and flags
 CC = gcc
 CFLAGS = -o2 -Wall
